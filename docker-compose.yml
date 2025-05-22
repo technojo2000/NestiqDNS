@@ -1,0 +1,16 @@
+services:
+  nestiqdns:
+    build: .   
+    container_name: nestiqdns
+    ports:
+      - 8080:8080
+      - 5399:53/udp
+    environment:
+      PYTHONUNBUFFERED: 1
+      REDIS_HOST: 127.0.0.1
+      REDIS_PORT: 6379
+      DNS_ADDRESS: 0.0.0.0
+      DNS_PORT: 53
+      WEB_ADDRESS: 0.0.0.0
+      WEB_PORT: 8080
+    restart: unless-stopped
